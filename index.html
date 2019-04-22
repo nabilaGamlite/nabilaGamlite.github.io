@@ -188,22 +188,22 @@
         StatePark: {
             center: {lat: 5.981112, lng: 116.076686},
             population: 0.4,
-            strokeColor: '#ff4500',
-            fillColor: '#ff4500',
+            strokeColor: '#5f9dd7',
+            fillColor: '#5f9dd7',
             content:'Zone 1: Updated Maintenance cost : RM 300,000.00'
         },
         CityPark: {
             center: {lat: 5.981479, lng: 116.074656},
             population: 0.5,
-            strokeColor: '#FFA500',
-            fillColor: '#FFA500',
+            strokeColor: '#fbc300',
+            fillColor: '#fbc300',
             content:'Zone 2: Updated Maintenance cost : RM 290,000.00'
         },
         GayaTransport: {
             center: {lat: 5.979666, lng: 116.075994},
             population: 0.2,
-            strokeColor: '#FF0000',
-            fillColor: '#FF0000',
+            strokeColor: '#6bae40',
+            fillColor: '#6bae40',
             content:'Zone 3: Updated Maintenance cost : RM 280,000.00'
         }
     };
@@ -235,16 +235,17 @@
             });
 
             var infoWindow = new google.maps.InfoWindow({
-                content: citymap[city].content
+                // content: citymap[city].content
             });
 
             google.maps.event.addListener(cityCircle, 'click', function(ev){
                 infoWindow.setPosition(ev.latLng);
+                infoWindow.setContent(citymap[city].content);
                 infoWindow.open(map);
             });
         }
     }
-
++
 
     (function(){ var files = ["https://code.highcharts.com/stock/highstock.js","https://code.highcharts.com/highcharts-more.js","https://code.highcharts.com/highcharts-3d.js","https://code.highcharts.com/modules/data.js","https://code.highcharts.com/modules/exporting.js","http://code.highcharts.com/modules/funnel.js","http://code.highcharts.com/modules/solid-gauge.js"],loaded = 0; if (typeof window["HighchartsEditor"] === "undefined") {window.HighchartsEditor = {ondone: [cl],hasWrapped: false,hasLoaded: false};include(files[0]);} else {if (window.HighchartsEditor.hasLoaded) {cl();} else {window.HighchartsEditor.ondone.push(cl);}}function isScriptAlreadyIncluded(src){var scripts = document.getElementsByTagName("script");for (var i = 0; i < scripts.length; i++) {if (scripts[i].hasAttribute("src")) {if ((scripts[i].getAttribute("src") || "").indexOf(src) >= 0 || (scripts[i].getAttribute("src") === "http://code.highcharts.com/highcharts.js" && src === "https://code.highcharts.com/stock/highstock.js")) {return true;}}}return false;}function check() {if (loaded === files.length) {for (var i = 0; i < window.HighchartsEditor.ondone.length; i++) {try {window.HighchartsEditor.ondone[i]();} catch(e) {console.error(e);}}window.HighchartsEditor.hasLoaded = true;}}function include(script) {function next() {++loaded;if (loaded < files.length) {include(files[loaded]);}check();}if (isScriptAlreadyIncluded(script)) {return next();}var sc=document.createElement("script");sc.src = script;sc.type="text/javascript";sc.onload=function() { next(); };document.head.appendChild(sc);}function each(a, fn){if (typeof a.forEach !== "undefined"){a.forEach(fn);}else{for (var i = 0; i < a.length; i++){if (fn) {fn(a[i]);}}}}var inc = {},incl=[]; each(document.querySelectorAll("script"), function(t) {inc[t.src.substr(0, t.src.indexOf("?"))] = 1; }); function cl() {if(typeof window["Highcharts"] !== "undefined"){var options={"chart":{"type":"line"},"title":{"text":"Tree Maintenance Budget Forecast"},"subtitle":{"text":""},"exporting":{"enabled":false},"series":[{"name":"Budget","turboThreshold":0,"marker":{}}],"plotOptions":{"series":{"animation":false,"dataLabels":{}}},"data":{"csv":"row,Budget\n2016,26\n2017,28\n2018,28\n2019,28","googleSpreadsheetKey":false,"googleSpreadsheetWorksheet":false},"legend":{},"yAxis":[{"title":{"text":"Budget in Million"},"labels":{formatter: function() {
                     if (this.value >= 0) {
