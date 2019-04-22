@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <title>Tree Dashboard</title>
+
+    <!-- Favicons -->
+    <link href="img/tree.png" rel="icon">
+    <!--<link href="img/apple-touch-icon.png" rel="apple-touch-icon">-->
+
+    <!-- Bootstrap core CSS -->
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!--external css-->
+    <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="css/zabuto_calendar.css">
+    <link rel="stylesheet" type="text/css" href="lib/gritter/css/jquery.gritter.css"/>
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet">
+    <script src="lib/chart-master/Chart.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+    <!-- =======================================================
+      Template Name: Dashio
+      Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
+      Author: TemplateMag.com
+      License: https://templatemag.com/license/
+    ======================================================= -->
+</head>
+
+<body>
+<section id="container">
+    <!-- **********************************************************************************************************************************************************
+        TOP BAR CONTENT & NOTIFICATIONS
+        *********************************************************************************************************************************************************** -->
+    <!--header start-->
+    <header class="header black-bg">
+        <div class="sidebar-toggle-box">
+            <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+        </div>
+        <!--logo start-->
+        <a href="index.html" class="logo">
+            <img src="img/tree.png" width="12%"/>
+            <b>Urban <span>3</span> Solution Sdn Bhd</b>
+        </a>
+        <!--logo end-->
+    </header>
+    <!--header end-->
+    <!-- **********************************************************************************************************************************************************
+        MAIN SIDEBAR MENU
+        *********************************************************************************************************************************************************** -->
+    <!--sidebar start-->
+    <aside>
+        <div id="sidebar" class="nav-collapse ">
+            <!-- sidebar menu start-->
+            <ul class="sidebar-menu" id="nav-accordion">
+                <li class="mt">
+                    <a class="" href="index.html">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="active" href="page2.html">
+                        <i class="fa fa-book"></i>
+                        <span>Page 2 </span>
+                    </a>
+                </li>
+            </ul>
+            <!-- sidebar menu end-->
+        </div>
+    </aside>
+    <!--sidebar end-->
+    <!-- **********************************************************************************************************************************************************
+        MAIN CONTENT
+        *********************************************************************************************************************************************************** -->
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div id="highcharts-a6e705a8-c7ce-43db-8729-6d5a6ed1f2e1"></div>
+                        <br/>
+                        <div id="container1" style="min-width: 310px; max-width: 800px; height: 400px; margin: 0 auto"></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div id="map" style="height: 815px"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+    <!--main content end-->
+    <!--footer start-->
+    <footer class="site-footer">
+        <div class="text-center">
+            <p>
+                &copy; Copyrights <strong>Gamlite IT(M) Sdn Bhd</strong>. All Rights Reserved
+            </p>
+            <div class="credits">
+                <!--
+                  You are NOT allowed to delete the credit link to TemplateMag with free version.
+                  You can delete the credit link only if you bought the pro version.
+                  Buy the pro version with working PHP/AJAX contact form: https://templatemag.com/dashio-bootstrap-admin-template/
+                  Licensing information: https://templatemag.com/license/
+                -->
+                <!--Created with Dashio template by <a href="https://templatemag.com/">TemplateMag</a>-->
+            </div>
+            <a href="index.html#" class="go-top">
+                <i class="fa fa-angle-up"></i>
+            </a>
+        </div>
+    </footer>
+    <!--footer end-->
+</section>
+<!-- js placed at the end of the document so the pages load faster -->
+<script src="lib/jquery/jquery.min.js"></script>
+
+<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+<script class="include" type="text/javascript" src="lib/jquery.dcjqaccordion.2.7.js"></script>
+<script src="lib/jquery.scrollTo.min.js"></script>
+<script src="lib/jquery.nicescroll.js" type="text/javascript"></script>
+<script src="lib/jquery.sparkline.js"></script>
+<!--common script for all pages-->
+<script src="lib/common-scripts.js"></script>
+<script type="text/javascript" src="lib/gritter/js/jquery.gritter.js"></script>
+<script type="text/javascript" src="lib/gritter-conf.js"></script>
+<!--script for this page-->
+<script src="lib/sparkline-chart.js"></script>
+<script src="lib/zabuto_calendar.js"></script>
+<script type="text/javascript">
+
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMmZGYIId2E6R-wHFd4ONLAdVGVIn-u9s&callback=initMap">
+</script>
+<script type="application/javascript">
+    $(document).ready(function () {
+        $("#date-popover").popover({
+            html: true,
+            trigger: "manual"
+        });
+        $("#date-popover").hide();
+        $("#date-popover").click(function (e) {
+            $(this).hide();
+        });
+
+        $("#my-calendar").zabuto_calendar({
+            action: function () {
+                return myDateFunction(this.id, false);
+            },
+            action_nav: function () {
+                return myNavFunction(this.id);
+            },
+            ajax: {
+                url: "show_data.php?action=1",
+                modal: true
+            },
+            legend: [{
+                type: "text",
+                label: "Special event",
+                badge: "00"
+            },
+                {
+                    type: "block",
+                    label: "Regular event",
+                }
+            ]
+        });
+    });
+
+    function myNavFunction(id) {
+        $("#date-popover").hide();
+        var nav = $("#" + id).data("navigation");
+        var to = $("#" + id).data("to");
+        console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
+    }
+
+    var citymap = {
+        LahadDatu: {
+            center: {lat: 5.230736, lng: 118.737986},
+            population: 45333,
+            strokeColor: '#ff4500',
+            fillColor: '#ff4500',
+        },
+        Kinabalu: {
+            center: {lat: 6.103220, lng: 116.564179},
+            population: 84445,
+            strokeColor: '#FFA500',
+            fillColor: '#FFA500',
+        },
+        Maliau: {
+            center: {lat: 4.853459, lng: 116.886374},
+            population: 38534,
+            strokeColor: '#FF0000',
+            fillColor: '#FF0000',
+        }
+    };
+
+    function initMap() {
+        // Create the map.
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 7,
+            center: {lat: 5.344597, lng: 117.006928},
+            mapTypeId: 'terrain'
+        });
+
+        // Construct the circle for each value in citymap.
+        // Note: We scale the area of the circle based on the population.
+        for (var city in citymap) {
+            // Add the circle for this city to the map.
+            var cityCircle = new google.maps.Circle({
+                strokeColor: citymap[city].strokeColor,
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: citymap[city].strokeColor,
+                fillOpacity: 0.35,
+                map: map,
+                center: citymap[city].center,
+                radius: Math.sqrt(citymap[city].population) * 100
+            });
+        }
+    }
+
+
+    (function(){ var files = ["https://code.highcharts.com/stock/highstock.js","https://code.highcharts.com/highcharts-more.js","https://code.highcharts.com/highcharts-3d.js","https://code.highcharts.com/modules/data.js","https://code.highcharts.com/modules/exporting.js","http://code.highcharts.com/modules/funnel.js","http://code.highcharts.com/modules/solid-gauge.js"],loaded = 0; if (typeof window["HighchartsEditor"] === "undefined") {window.HighchartsEditor = {ondone: [cl],hasWrapped: false,hasLoaded: false};include(files[0]);} else {if (window.HighchartsEditor.hasLoaded) {cl();} else {window.HighchartsEditor.ondone.push(cl);}}function isScriptAlreadyIncluded(src){var scripts = document.getElementsByTagName("script");for (var i = 0; i < scripts.length; i++) {if (scripts[i].hasAttribute("src")) {if ((scripts[i].getAttribute("src") || "").indexOf(src) >= 0 || (scripts[i].getAttribute("src") === "http://code.highcharts.com/highcharts.js" && src === "https://code.highcharts.com/stock/highstock.js")) {return true;}}}return false;}function check() {if (loaded === files.length) {for (var i = 0; i < window.HighchartsEditor.ondone.length; i++) {try {window.HighchartsEditor.ondone[i]();} catch(e) {console.error(e);}}window.HighchartsEditor.hasLoaded = true;}}function include(script) {function next() {++loaded;if (loaded < files.length) {include(files[loaded]);}check();}if (isScriptAlreadyIncluded(script)) {return next();}var sc=document.createElement("script");sc.src = script;sc.type="text/javascript";sc.onload=function() { next(); };document.head.appendChild(sc);}function each(a, fn){if (typeof a.forEach !== "undefined"){a.forEach(fn);}else{for (var i = 0; i < a.length; i++){if (fn) {fn(a[i]);}}}}var inc = {},incl=[]; each(document.querySelectorAll("script"), function(t) {inc[t.src.substr(0, t.src.indexOf("?"))] = 1; }); function cl() {if(typeof window["Highcharts"] !== "undefined"){var options={"chart":{"type":"line"},"title":{"text":"Tree Maintenance Budget Forecast"},"subtitle":{"text":""},"exporting":{"enabled":false},"series":[{"name":"Budget","turboThreshold":0,"marker":{}}],"plotOptions":{"series":{"animation":false,"dataLabels":{}}},"data":{"csv":"row,Budget\n2017,22\n2018,26\n2019,28","googleSpreadsheetKey":false,"googleSpreadsheetWorksheet":false},"legend":{},"yAxis":[{"title":{"text":"Budget in Million"},"labels":{formatter: function() {
+                    if (this.value >= 0) {
+                        return 'RM ' + this.value
+                    } else {
+                        return '-RM ' + (-this.value)
+                    }
+                }}}],"xAxis":[{"title":{"style":{"fontFamily":"\"Lucida Grande\", \"Lucida Sans Unicode\", Verdana, Arial, Helvetica, sans-serif","color":"#666666","fontSize":"18px","fontWeight":"normal","fontStyle":"normal"},"text":"Year"},"labels":{"format":"{value}"}}],"credits":{"enabled":false}};/*
+// Sample of extending options:
+Highcharts.merge(true, options, {
+    chart: {
+        backgroundColor: "#bada55"
+    },
+    plotOptions: {
+        series: {
+            cursor: "pointer",
+            events: {
+                click: function(event) {
+                    alert(this.name + " clicked\n" +
+                          "Alt: " + event.altKey + "\n" +
+                          "Control: " + event.ctrlKey + "\n" +
+                          "Shift: " + event.shiftKey + "\n");
+                }
+            }
+        }
+    }
+});
+*/new Highcharts.Chart("highcharts-a6e705a8-c7ce-43db-8729-6d5a6ed1f2e1", options);}}})();
+
+
+
+
+    Highcharts.chart('container1', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Condition Rating By Zone'
+        },
+        xAxis: {
+            categories: ['Zone A', 'Zone B', 'Zone C'],
+            title: {
+                text: null
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Condition Rating',
+            },
+            labels: {
+                overflow: 'justify'
+            }
+        },
+        plotOptions: {
+            bar: {
+                dataLabels: {
+                    enabled: true
+                }
+            }
+        },
+        legend: {
+
+        },
+        credits: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        },
+        series: [{
+            name: 'Zone A',
+            data: [1, 5, 2]
+        }, {
+            name: 'Zone B',
+            data: [2, 5, 5]
+        }, {
+            name: 'Zone C',
+            data: [1, 2, 5]
+        }]
+    });
+
+
+</script>
+</body>
+
+</html>

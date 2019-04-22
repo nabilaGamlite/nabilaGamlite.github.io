@@ -68,7 +68,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="google_maps.html">
+                    <a href="page2.html">
                         <i class="fa fa-book"></i>
                         <span>Page 2 </span>
                     </a>
@@ -188,16 +188,20 @@
         LahadDatu: {
             center: {lat: 5.230736, lng: 118.737986},
             population: 45333,
-            strokeColor: '##FFA500',
-            fillColor: '##FFA500',
+            strokeColor: '#ff4500',
+            fillColor: '#ff4500',
         },
         Kinabalu: {
             center: {lat: 6.103220, lng: 116.564179},
-            population: 84445
+            population: 84445,
+            strokeColor: '#FFA500',
+            fillColor: '#FFA500',
         },
         Maliau: {
             center: {lat: 4.853459, lng: 116.886374},
-            population: 38534
+            population: 38534,
+            strokeColor: '#FF0000',
+            fillColor: '#FF0000',
         }
     };
 
@@ -214,10 +218,10 @@
         for (var city in citymap) {
             // Add the circle for this city to the map.
             var cityCircle = new google.maps.Circle({
-                strokeColor: '#FF0000',
+                strokeColor: citymap[city].strokeColor,
                 strokeOpacity: 0.8,
                 strokeWeight: 2,
-                fillColor: '#FF0000',
+                fillColor: citymap[city].strokeColor,
                 fillOpacity: 0.35,
                 map: map,
                 center: citymap[city].center,
